@@ -195,51 +195,6 @@
     selector: '.portfolio-lightbox'
   });
 
-  /**
-   * Portfolio details slider
-   */
-  new Swiper('.portfolio-details-slider', {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    }
-  });
-
-  /**
-   * Testimonials slider
-   */
-  new Swiper('.testimonials-slider', {
-    speed: 600,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false
-    },
-    slidesPerView: 'auto',
-    pagination: {
-      el: '.swiper-pagination',
-      type: 'bullets',
-      clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
-    }
-  });
 
   /**
    * Animation on scroll
@@ -253,173 +208,49 @@
     })
   });
   
-/* gallery  */
-var galleryTop = new Swiper(".gallery-one", {
-  spaceBetween: 10,
-  grabCursor: true,
-  navigation: {
-    nextEl: ".swiper-button-next-one",
-    prevEl: ".swiper-button-prev-one"
-  },
-  loop: true,
-  loopedSlides: 4,
-  autoplay: {
-    delay: 3000
-  },
-  // other parameters
-  on: {
-    click: function() {
-      /* do something */
-    }
-  },
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
-/* thumbs */
-var galleryThumbs = new Swiper(".gallery-thumbs-one", {
-  spaceBetween: 10,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  touchRatio: 0.4,
-  slideToClickedSlide: true,
-  loop: true,
-  loopedSlides: 4,
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
-/* gallery  */
-var galleryTop2 = new Swiper(".gallery-2", {
-  spaceBetween: 10,
-  grabCursor: true,
-  navigation: {
-    nextEl: ".swiper-button-next-2",
-    prevEl: ".swiper-button-prev-2"
-  },
-  loop: true,
-  loopedSlides: 4,
-  autoplay: {
-    delay: 3000
-  },
-  // other parameters
-  on: {
-    click: function() {
-      /* do something */
-    }
-  },
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
-/* thumbs */
-var galleryThumbs2 = new Swiper(".gallery-thumbs-2", {
-  spaceBetween: 10,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  touchRatio: 0.4,
-  slideToClickedSlide: true,
-  loop: true,
-  loopedSlides: 4,
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
-/* gallery  */
-var galleryTop3 = new Swiper(".gallery-3", {
-  spaceBetween: 10,
-  grabCursor: true,
-  navigation: {
-    nextEl: ".swiper-button-next-3",
-    prevEl: ".swiper-button-prev-3"
-  },
-  loop: true,
-  loopedSlides: 4,
-  autoplay: {
-    delay: 3000
-  },
-  // other parameters
-  on: {
-    click: function() {
-      /* do something */
-    }
-  },
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
-/* thumbs */
-var galleryThumbs3 = new Swiper(".gallery-thumbs-3", {
-  spaceBetween: 10,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  touchRatio: 0.4,
-  slideToClickedSlide: true,
-  loop: true,
-  loopedSlides: 4,
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
+const myCustomSlider = document.querySelectorAll('.gallery');
+const myCustomGalleryThumbs = document.querySelectorAll('.gallery-thumbs');
 
-var galleryTop4 = new Swiper(".gallery-4", {
-  spaceBetween: 10,
+for (let i = 0; i < myCustomSlider.length; i++) {
+
+    myCustomSlider[i].classList.add('gallery-top-' + i);
+    myCustomGalleryThumbs[i].classList.add('thumbs-class-' + i);
+
+    var galleryThumbs = new Swiper('.thumbs-class-' + i , {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        watchSlidesVisibility: true,
+        watchSlidesProgress: true,
+    });
+
+    var galleryTop = new Swiper('.gallery-top-' + i, {
+          spaceBetween: 10,
   grabCursor: true,
   navigation: {
-    nextEl: ".swiper-button-next-4",
-    prevEl: ".swiper-button-prev-4"
+    nextEl: `.swiper-button-next-${i+1}`,
+    prevEl: `.swiper-button-prev-${i+1}`
   },
   loop: true,
   loopedSlides: 4,
   autoplay: {
     delay: 3000
   },
-  // other parameters
   on: {
     click: function() {
-      /* do something */
     }
   },
   keyboard: {
     enabled: true,
     onlyInViewport: false
-  }
-});
-/* thumbs */
-var galleryThumbs4 = new Swiper(".gallery-thumbs-4", {
-  spaceBetween: 10,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  touchRatio: 0.4,
-  slideToClickedSlide: true,
-  loop: true,
-  loopedSlides: 4,
-  keyboard: {
-    enabled: true,
-    onlyInViewport: false
-  }
-});
-
-
-/* set conteoller  */
+  },
+  thumbs: {
+    swiper: galleryThumbs
+}
+    }); 
 galleryTop.controller.control = galleryThumbs;
-galleryThumbs.controller.control = galleryTop;
-
-galleryTop2.controller.control = galleryThumbs2;
-galleryThumbs2.controller.control = galleryTop2;
-
-galleryTop3.controller.control = galleryThumbs3;
-galleryThumbs3.controller.control = galleryTop3;
-
-galleryTop4.controller.control = galleryThumbs4;
-galleryThumbs4.controller.control = galleryTop4;
-
+// galleryThumbs.controller.control = galleryTop;
+}
 
 particlesJS("particles-bg", {
   "particles": {

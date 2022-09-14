@@ -999,13 +999,16 @@ section {
   font-weight: bold;
   color: #231b93;
 }
-
+.gallery-thumbs .swiper-slide {
+  flex-grow: 1;
+  overflow: hidden;
+}
 .gallery-thumbs img {
   cursor: pointer;
-  width: auto;
   height: 100px;
+  width: 100%;
   border-radius: 10px;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 /* buttons */
