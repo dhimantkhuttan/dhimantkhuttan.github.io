@@ -234,10 +234,15 @@ for (let i = 0; i < myCustomSlider.length; i++) {
   loop: true,
   loopedSlides: 4,
   autoplay: {
-    delay: 3000
+    delay: 4000
   },
   on: {
-    click: function() {
+    click: function(e) {
+      // let image = document.querySelectorAll('.gallery-top-'+i+' img')[e.activeIndex]?.src
+      let image = document.querySelectorAll('.gallery-top-'+i+' .swiper-zoom-container')[e.activeIndex]
+
+      // console.log(image.querySelector('img')?.src)
+      window.open(image.querySelector('img')?.src, '_blank');
     }
   },
   keyboard: {
